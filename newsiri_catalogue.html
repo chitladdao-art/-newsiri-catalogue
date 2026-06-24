@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>New Siri — New Collection 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f0e0c;
+    --paper: #f7f4ef;
+    --gold: #b8965a;
+    --gold-light: #d4b07a;
+    --muted: #7a7568;
+    --border: rgba(15,14,12,0.1);
+    --dark: #1a1814;
+    --display: 'Cormorant Garamond', Georgia, serif;
+    --body: 'Inter', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--body);
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: 56px;
+    background: rgba(247,244,239,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px;
+  }
+  .nav-brand {
+    font-family: var(--display);
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: var(--ink);
+    text-transform: uppercase;
+  }
+  .nav-brand span { color: var(--gold); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+    font-weight: 400;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+  .nav-tag {
+    font-size: 10px; letter-spacing: 2px; color: var(--gold);
+    border: 0.5px solid var(--gold); padding: 4px 12px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    margin-top: 56px;
+    height: calc(100vh - 56px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+  }
+  .hero-left {
+    background: var(--dark);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 64px 56px;
+    position: relative; overflow: hidden;
+  }
+  .hero-pattern {
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(184,150,90,0.04) 40px, rgba(184,150,90,0.04) 41px),
+                      repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(184,150,90,0.04) 40px, rgba(184,150,90,0.04) 41px);
+  }
+  .hero-eyebrow {
+    font-size: 10px; letter-spacing: 4px; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 20px; position: relative;
+  }
+  .hero-title {
+    font-family: var(--display);
+    font-size: 72px; font-weight: 300; line-height: 1;
+    color: #f0ece4; position: relative; margin-bottom: 24px;
+  }
+  .hero-title em { font-style: italic; color: var(--gold-light); }
+  .hero-desc {
+    font-size: 13px; color: rgba(240,236,228,0.5);
+    line-height: 1.8; max-width: 320px; position: relative; margin-bottom: 40px;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); border: 0.5px solid var(--gold);
+    padding: 14px 28px; cursor: pointer; position: relative;
+    background: transparent; font-family: var(--body);
+    transition: background 0.2s, color 0.2s;
+  }
+  .hero-cta:hover { background: var(--gold); color: var(--dark); }
+
+  .hero-right {
+    background: #e8e4dc;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .hero-fabric-display {
+    position: relative; width: 260px; height: 340px;
+  }
+  .fabric-roll {
+    width: 220px; height: 280px;
+    background: #606078;
+    border-radius: 4px;
+    position: absolute; top: 30px; left: 20px;
+    box-shadow: 8px 8px 0 #b0adb8, 16px 16px 0 #d0cdd8;
+    overflow: hidden;
+  }
+  .fabric-roll::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.03) 3px, rgba(255,255,255,0.03) 6px),
+                repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(255,255,255,0.03) 3px, rgba(255,255,255,0.03) 6px);
+  }
+  .fabric-roll-shine {
+    position: absolute; top: 0; left: 30%;
+    width: 70%; height: 100%;
+    background: linear-gradient(110deg, rgba(255,255,255,0.07) 0%, transparent 60%);
+  }
+  .fabric-badge {
+    position: absolute; bottom: 20px; right: 0;
+    background: var(--gold); color: var(--dark);
+    font-size: 9px; letter-spacing: 3px; padding: 6px 16px;
+    font-weight: 500;
+  }
+  .hero-stats {
+    position: absolute; bottom: 40px; left: 40px;
+    display: flex; gap: 32px;
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat-num {
+    font-family: var(--display); font-size: 32px; font-weight: 300;
+    color: rgba(240,236,228,0.9); display: block; line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 9px; letter-spacing: 2px; color: rgba(240,236,228,0.35);
+    text-transform: uppercase; margin-top: 4px;
+  }
+
+  /* ── CATALOGUE VIEWER ── */
+  .section { padding: 80px 40px; }
+  .section-header {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 48px; border-bottom: 0.5px solid var(--border); padding-bottom: 20px;
+  }
+  .section-title {
+    font-family: var(--display); font-size: 36px; font-weight: 300; letter-spacing: 1px;
+  }
+  .section-meta { font-size: 11px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; }
+
+  /* Tab navigation */
+  .category-tabs {
+    display: flex; gap: 0; margin-bottom: 48px;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .cat-tab {
+    padding: 12px 28px; font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; cursor: pointer; border: none;
+    background: transparent; color: var(--muted); font-family: var(--body);
+    border-bottom: 2px solid transparent; margin-bottom: -0.5px;
+    transition: all 0.2s;
+  }
+  .cat-tab:hover { color: var(--ink); }
+  .cat-tab.active { color: var(--ink); border-bottom-color: var(--gold); }
+
+  /* ── FABRIC CARD VIEWER ── */
+  .fabric-viewer {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 0;
+    background: #fff;
+    border: 0.5px solid var(--border);
+    min-height: 580px;
+  }
+
+  .fabric-nav-panel {
+    border-right: 0.5px solid var(--border);
+    display: flex; flex-direction: column;
+  }
+
+  .fabric-search {
+    padding: 20px;
+    border-bottom: 0.5px solid var(--border);
+    position: relative;
+  }
+  .fabric-search input {
+    width: 100%; padding: 9px 12px 9px 32px;
+    border: 0.5px solid var(--border);
+    font-family: var(--body); font-size: 12px;
+    background: var(--paper); color: var(--ink);
+    outline: none;
+  }
+  .fabric-search input:focus { border-color: var(--gold); }
+  .fabric-search::before {
+    content: '⌕'; position: absolute; left: 29px; top: 29px;
+    color: var(--muted); font-size: 16px;
+  }
+
+  .fabric-list {
+    flex: 1; overflow-y: auto; max-height: 500px;
+  }
+  .fabric-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 20px; cursor: pointer;
+    border-bottom: 0.5px solid var(--border);
+    transition: background 0.15s;
+  }
+  .fabric-item:hover { background: var(--paper); }
+  .fabric-item.active { background: var(--ink); }
+  .fabric-item.active .fab-code,
+  .fabric-item.active .fab-name { color: #f0ece4; }
+  .fabric-item.active .fab-tone { color: rgba(240,236,228,0.5); }
+
+  .fab-swatch {
+    width: 36px; height: 36px; flex-shrink: 0;
+    border-radius: 2px; border: 0.5px solid rgba(0,0,0,0.08);
+    position: relative; overflow: hidden;
+  }
+  .fab-swatch::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 3px, rgba(255,255,255,0.06) 3px, rgba(255,255,255,0.06) 4px);
+  }
+  .fab-info { flex: 1; min-width: 0; }
+  .fab-code { font-size: 12px; font-weight: 500; color: var(--ink); letter-spacing: 0.5px; }
+  .fab-name { font-size: 11px; color: var(--muted); margin-top: 1px; }
+  .fab-tone { font-size: 10px; color: rgba(122,117,104,0.6); margin-top: 2px; letter-spacing: 0.5px; }
+  .fab-arrow { font-size: 12px; color: var(--muted); }
+  .fabric-item.active .fab-arrow { color: var(--gold); }
+
+  /* ── DETAIL PANEL ── */
+  .detail-panel {
+    display: flex; flex-direction: column;
+  }
+
+  .detail-header {
+    padding: 28px 32px 20px;
+    border-bottom: 0.5px solid var(--border);
+    display: flex; justify-content: space-between; align-items: flex-start;
+  }
+  .detail-code {
+    font-family: var(--display); font-size: 40px; font-weight: 300; letter-spacing: 1px;
+    line-height: 1;
+  }
+  .detail-code-sub {
+    font-size: 11px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase;
+    margin-top: 6px;
+  }
+  .detail-nav-btns { display: flex; gap: 8px; }
+  .nav-btn {
+    width: 36px; height: 36px; border: 0.5px solid var(--border);
+    background: transparent; cursor: pointer; font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted); transition: all 0.2s; font-family: var(--body);
+  }
+  .nav-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+  .detail-body { padding: 24px 32px; flex: 1; display: flex; gap: 28px; }
+
+  .detail-fabric-preview {
+    width: 140px; flex-shrink: 0;
+  }
+  .big-swatch {
+    width: 140px; height: 168px; border-radius: 2px;
+    border: 0.5px solid var(--border);
+    position: relative; overflow: hidden;
+    margin-bottom: 10px;
+  }
+  .big-swatch::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.05) 3px, rgba(255,255,255,0.05) 6px),
+                repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(255,255,255,0.05) 3px, rgba(255,255,255,0.05) 6px);
+  }
+  .big-swatch-fold {
+    position: absolute; top: 0; left: 30%;
+    width: 70%; height: 100%;
+    background: linear-gradient(110deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+  }
+  .swatch-label {
+    font-size: 9px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase;
+    text-align: center;
+  }
+
+  .detail-specs { flex: 1; }
+  .spec-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 9px 0; border-bottom: 0.5px solid var(--border);
+    font-size: 12px;
+  }
+  .spec-row:last-child { border-bottom: none; }
+  .spec-key { color: var(--muted); letter-spacing: 0.5px; }
+  .spec-val { font-weight: 500; text-align: right; }
+
+  .occasion-row {
+    display: flex; gap: 6px; flex-wrap: wrap; padding-top: 16px;
+  }
+  .occ-tag {
+    font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 4px 10px; border: 0.5px solid var(--border); color: var(--muted);
+  }
+
+  /* SUIT STYLES STRIP */
+  .style-strip {
+    border-top: 0.5px solid var(--border);
+    padding: 20px 32px;
+    background: var(--paper);
+  }
+  .style-strip-label {
+    font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 14px;
+  }
+  .style-options { display: flex; gap: 12px; }
+  .style-opt {
+    flex: 1; border: 0.5px solid var(--border);
+    background: #fff; padding: 12px; cursor: pointer;
+    transition: border-color 0.2s; position: relative;
+  }
+  .style-opt:hover, .style-opt.selected { border-color: var(--gold); }
+  .style-opt.selected::after {
+    content: '✓'; position: absolute; top: 6px; right: 8px;
+    font-size: 10px; color: var(--gold);
+  }
+  .style-svg { width: 100%; aspect-ratio: 2/3; margin-bottom: 8px; }
+  .style-opt-name { font-size: 10px; letter-spacing: 1px; text-align: center; color: var(--ink); }
+  .style-opt-sub { font-size: 9px; color: var(--muted); text-align: center; margin-top: 2px; }
+
+  /* PAIRING */
+  .pairing-strip {
+    border-top: 0.5px solid var(--border);
+    padding: 16px 32px;
+    display: flex; align-items: center; gap: 20px;
+  }
+  .pair-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+  .pair-swatches { display: flex; gap: 10px; }
+  .pair-swatch { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+  .pair-circle {
+    width: 26px; height: 26px; border-radius: 50%;
+    border: 0.5px solid rgba(0,0,0,0.1);
+  }
+  .pair-name { font-size: 8px; letter-spacing: 1px; color: var(--muted); text-align: center; }
+
+  .share-btn {
+    margin-left: auto; padding: 8px 20px;
+    border: 0.5px solid var(--gold); background: transparent;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); cursor: pointer; font-family: var(--body);
+    transition: all 0.2s;
+  }
+  .share-btn:hover { background: var(--gold); color: var(--dark); }
+
+  /* ── COLLECTION GRID ── */
+  .collection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 0.5px solid var(--border);
+  }
+  .coll-card {
+    background: #fff; padding: 24px 20px;
+    cursor: pointer; transition: background 0.15s;
+    display: flex; flex-direction: column; gap: 10px;
+    position: relative;
+  }
+  .coll-card:hover { background: var(--paper); }
+  .coll-swatch { height: 80px; border-radius: 2px; position: relative; overflow: hidden; }
+  .coll-swatch::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(255,255,255,0.05) 4px, rgba(255,255,255,0.05) 5px);
+  }
+  .coll-code { font-size: 12px; font-weight: 500; }
+  .coll-name { font-size: 11px; color: var(--muted); }
+  .coll-arrow { font-size: 11px; color: var(--gold); letter-spacing: 1px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark); color: rgba(240,236,228,0.4);
+    padding: 40px; display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-brand { font-family: var(--display); font-size: 18px; color: rgba(240,236,228,0.8); letter-spacing: 3px; }
+  .footer-copy { font-size: 10px; letter-spacing: 1px; }
+
+  /* ── TOAST ── */
+  .toast {
+    position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(20px);
+    background: var(--ink); color: var(--paper);
+    padding: 12px 24px; font-size: 11px; letter-spacing: 1px;
+    opacity: 0; transition: all 0.3s; pointer-events: none; z-index: 200;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ── SECTIONS TOGGLE ── */
+  .section-content { display: none; }
+  .section-content.active { display: block; }
+
+  /* scrollbar */
+  .fabric-list::-webkit-scrollbar { width: 4px; }
+  .fabric-list::-webkit-scrollbar-track { background: transparent; }
+  .fabric-list::-webkit-scrollbar-thumb { background: var(--border); }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">NEW <span>SIRI</span></div>
+  <div class="nav-links">
+    <a href="#collection" class="active" onclick="showSection('collection',this)">Collection</a>
+    <a href="#catalogue" onclick="showSection('catalogue',this)">Fabric Catalogue</a>
+    <a href="#styles" onclick="showSection('styles',this)">Suit Styles</a>
+  </div>
+  <div class="nav-tag">New Collection 2026</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-pattern"></div>
+    <div class="hero-eyebrow">New Collection · 2026</div>
+    <h1 class="hero-title">Crafted<br/>for the<br/><em>Discerning</em></h1>
+    <p class="hero-desc">Premium suit fabrics curated for the modern executive. Each cloth selected for drape, durability, and distinction.</p>
+    <button class="hero-cta" onclick="scrollTo('catalogue')">Browse Fabrics →</button>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">20+</span>
+        <div class="hero-stat-label">Articles</div>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">599</span>
+        <div class="hero-stat-label">Collection</div>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">3</span>
+        <div class="hero-stat-label">Categories</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-fabric-display">
+      <div class="fabric-roll">
+        <div class="fabric-roll-shine"></div>
+      </div>
+      <div class="fabric-badge">CHARCOAL BLUE GREY</div>
+    </div>
+  </div>
+</section>
+
+<!-- COLLECTION OVERVIEW -->
+<section class="section" id="collection">
+  <div class="section-header">
+    <h2 class="section-title">Collection Overview</h2>
+    <span class="section-meta">New Collection 2026</span>
+  </div>
+
+  <div class="category-tabs" id="col-tabs">
+    <button class="cat-tab active" onclick="switchColTab('suits',this)">Suits</button>
+    <button class="cat-tab" onclick="switchColTab('shirts',this)">Shirts</button>
+    <button class="cat-tab" onclick="switchColTab('lining',this)">Lining</button>
+    <button class="cat-tab" onclick="switchColTab('overcoats',this)">Overcoats</button>
+  </div>
+
+  <div id="col-suits" class="section-content active">
+    <div class="collection-grid" id="suit-grid"></div>
+  </div>
+  <div id="col-shirts" class="section-content">
+    <div class="collection-grid" id="shirt-grid"></div>
+  </div>
+  <div id="col-lining" class="section-content">
+    <div class="collection-grid" id="lining-grid"></div>
+  </div>
+  <div id="col-overcoats" class="section-content">
+    <div class="collection-grid" id="overcoat-grid"></div>
+  </div>
+</section>
+
+<!-- FABRIC CATALOGUE -->
+<section class="section" id="catalogue" style="background: #f0ece4;">
+  <div class="section-header">
+    <h2 class="section-title">Fabric Catalogue</h2>
+    <span class="section-meta" id="article-count">20 Articles · Series 599</span>
+  </div>
+
+  <div class="fabric-viewer">
+    <!-- LEFT: fabric list -->
+    <div class="fabric-nav-panel">
+      <div class="fabric-search">
+        <input type="text" placeholder="Search by code or colour..." id="fab-search" oninput="filterFabrics(this.value)"/>
+      </div>
+      <div class="fabric-list" id="fabric-list"></div>
+    </div>
+
+    <!-- RIGHT: detail -->
+    <div class="detail-panel" id="detail-panel">
+      <!-- filled by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- STYLES SECTION -->
+<section class="section" id="styles">
+  <div class="section-header">
+    <h2 class="section-title">Suit Style Guide</h2>
+    <span class="section-meta">How to wear 59900 series</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;">
+    <!-- style cards inline -->
+    <div style="border:0.5px solid var(--border);padding:28px;background:#fff;">
+      <div style="font-size:10px;letter-spacing:3px;color:var(--gold);margin-bottom:16px;">STYLE 01</div>
+      <svg viewBox="0 0 120 160" style="width:100%;margin-bottom:16px;">
+        <rect width="120" height="160" fill="#e8e4dc"/>
+        <path d="M30 30 L20 50 L18 140 L102 140 L100 50 L90 30 Z" fill="#606078" stroke="rgba(0,0,0,0.08)" stroke-width="0.5"/>
+        <path d="M45 30 L60 70 L75 30 L68 20 L60 22 L52 20 Z" fill="#4a4a62"/>
+        <circle cx="60" cy="78" r="3" fill="#b8965a" opacity="0.8"/>
+        <circle cx="60" cy="92" r="3" fill="#b8965a" opacity="0.8"/>
+        <rect x="23" y="95" width="22" height="8" rx="1" fill="rgba(0,0,0,0.06)"/>
+        <rect x="75" y="95" width="22" height="8" rx="1" fill="rgba(0,0,0,0.06)"/>
+        <rect x="70" y="55" width="14" height="6" rx="1" fill="rgba(0,0,0,0.04)"/>
+        <path d="M20 50 L10 110 L22 112 L28 60" fill="#606078"/>
+        <path d="M100 50 L110 110 L98 112 L92 60" fill="#606078"/>
+      </svg>
+      <div style="font-size:15px;font-family:var(--display);font-weight:400;margin-bottom:8px;">2-Button Notch Lapel</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.7;">The quintessential business suit. Clean, versatile, and appropriate across all corporate settings. Best suited for first meetings and everyday office wear.</div>
+    </div>
+    <div style="border:0.5px solid var(--border);padding:28px;background:#fff;">
+      <div style="font-size:10px;letter-spacing:3px;color:var(--gold);margin-bottom:16px;">STYLE 02</div>
+      <svg viewBox="0 0 120 160" style="width:100%;margin-bottom:16px;">
+        <rect width="120" height="160" fill="#e8e4dc"/>
+        <path d="M30 30 L20 50 L18 140 L102 140 L100 50 L90 30 Z" fill="#606078" stroke="rgba(0,0,0,0.08)" stroke-width="0.5"/>
+        <path d="M46 32 L60 72 L74 32 L80 22 L68 28 L60 26 L52 28 L40 22 Z" fill="#4a4a62"/>
+        <circle cx="60" cy="72" r="2.5" fill="#b8965a" opacity="0.8"/>
+        <circle cx="60" cy="83" r="2.5" fill="#b8965a" opacity="0.8"/>
+        <circle cx="60" cy="94" r="2.5" fill="#b8965a" opacity="0.8"/>
+        <rect x="23" y="93" width="22" height="7" rx="1" fill="rgba(0,0,0,0.06)"/>
+        <rect x="75" y="93" width="22" height="7" rx="1" fill="rgba(0,0,0,0.06)"/>
+        <rect x="75" y="84" width="14" height="5" rx="1" fill="rgba(0,0,0,0.04)"/>
+        <rect x="70" y="55" width="14" height="5" rx="1" fill="rgba(0,0,0,0.04)"/>
+        <path d="M20 50 L10 110 L22 112 L28 60" fill="#606078"/>
+        <path d="M100 50 L110 110 L98 112 L92 60" fill="#606078"/>
+      </svg>
+      <div style="font-size:15px;font-family:var(--display);font-weight:400;margin-bottom:8px;">3-Button Peak Lapel</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.7;">Projects authority and refinement. The peak lapel adds visual height and presence — favoured by senior executives and those who wish to make a strong impression.</div>
+    </div>
+    <div style="border:0.5px solid var(--border);padding:28px;background:#fff;">
+      <div style="font-size:10px;letter-spacing:3px;color:var(--gold);margin-bottom:16px;">STYLE 03</div>
+      <svg viewBox="0 0 120 160" style="width:100%;margin-bottom:16px;">
+        <rect width="120" height="160" fill="#e8e4dc"/>
+        <path d="M25 30 L18 50 L18 140 L102 140 L102 50 L95 30 Z" fill="#606078" stroke="rgba(0,0,0,0.08)" stroke-width="0.5"/>
+        <path d="M55 30 L45 140 L75 140 L65 30 Z" fill="#525268" opacity="0.4"/>
+        <path d="M42 32 L60 78 L78 32 L85 18 L68 30 L60 28 L52 30 L35 18 Z" fill="#4a4a62"/>
+        <circle cx="50" cy="72" r="2.5" fill="#b8965a" opacity="0.8"/>
+        <circle cx="70" cy="72" r="2.5" fill="#b8965a" opacity="0.8"/>
+        <circle cx="50" cy="85" r="2.5" fill="#b8965a" opacity="0.8"/>
+        <circle cx="70" cy="85" r="2.5" fill="#b8965a" opacity="0.8"/>
+        <circle cx="50" cy="98" r="2.5" fill="#b8965a" opacity="0.8"/>
+        <circle cx="70" cy="98" r="2.5" fill="#b8965a" opacity="0.8"/>
+        <rect x="20" y="93" width="20" height="7" rx="1" fill="rgba(0,0,0,0.06)"/>
+        <rect x="80" y="93" width="20" height="7" rx="1" fill="rgba(0,0,0,0.06)"/>
+        <path d="M18 50 L8 110 L20 112 L25 60" fill="#606078"/>
+        <path d="M102 50 L112 110 L100 112 L95 60" fill="#606078"/>
+      </svg>
+      <div style="font-size:15px;font-family:var(--display);font-weight:400;margin-bottom:8px;">Double Breasted 6×2</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.7;">The pinnacle of power dressing. Structured and commanding — ideal for boardrooms, formal dinners, and occasions that call for unmistakable confidence.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">NEW SIRI</div>
+  <div class="footer-copy">New Collection 2026 · All fabrics available to order</div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ─── DATA ───────────────────────────────────────
+const fabrics = [
+  { code:'59900-1',  name:'Charcoal Blue Grey',   hex:'#606078', tone:'Cool',   weight:'280g', weave:'Fine Melange',    finish:'Matte',  occasions:['BOARDROOM','BUSINESS TRAVEL','CLIENT MEETING'] },
+  { code:'59900-2',  name:'Midnight Navy',         hex:'#1e2d4a', tone:'Deep',   weight:'280g', weave:'Plain Weave',     finish:'Smooth', occasions:['BOARDROOM','FORMAL DINNER'] },
+  { code:'59900-3',  name:'Slate Charcoal',        hex:'#3c3c44', tone:'Cool',   weight:'290g', weave:'Hopsack',         finish:'Matte',  occasions:['BUSINESS','CONFERENCE'] },
+  { code:'59900-4',  name:'Warm Taupe',            hex:'#8c7a68', tone:'Warm',   weight:'270g', weave:'Fine Twill',      finish:'Soft',   occasions:['CASUAL SMART','LUNCH MEETING'] },
+  { code:'59900-5',  name:'Storm Grey',            hex:'#7a8088', tone:'Neutral',weight:'285g', weave:'Plain Weave',     finish:'Matte',  occasions:['ALL OCCASION'] },
+  { code:'59900-6',  name:'Deep Forest',           hex:'#2a3828', tone:'Deep',   weight:'295g', weave:'Fine Melange',    finish:'Matte',  occasions:['FORMAL','EVENING'] },
+  { code:'59900-7',  name:'Cadet Blue',            hex:'#4a5c6a', tone:'Cool',   weight:'280g', weave:'Hopsack',         finish:'Matte',  occasions:['BUSINESS','TRAVEL'] },
+  { code:'59900-8',  name:'Warm Charcoal',         hex:'#4a4238', tone:'Warm',   weight:'285g', weave:'Fine Twill',      finish:'Soft',   occasions:['BOARDROOM','DINNER'] },
+  { code:'59900-9',  name:'Pale Silver',           hex:'#9a9898', tone:'Light',  weight:'265g', weave:'Plain Weave',     finish:'Smooth', occasions:['DAYTIME','CORPORATE'] },
+  { code:'59900-10', name:'Indigo Dusk',           hex:'#383858', tone:'Deep',   weight:'280g', weave:'Fine Melange',    finish:'Matte',  occasions:['EVENING','FORMAL'] },
+  { code:'59900-11', name:'Terracotta Brown',      hex:'#6a4a38', tone:'Warm',   weight:'275g', weave:'Plain Weave',     finish:'Matte',  occasions:['CASUAL','WEEKEND'] },
+  { code:'59900-12', name:'Ash Grey',              hex:'#888888', tone:'Neutral',weight:'280g', weave:'Fine Twill',      finish:'Smooth', occasions:['ALL OCCASION'] },
+  { code:'59900-13', name:'Bottle Green',          hex:'#2a4838', tone:'Deep',   weight:'290g', weave:'Hopsack',         finish:'Matte',  occasions:['FORMAL','EVENING'] },
+  { code:'59900-14', name:'Stone Beige',           hex:'#c8b898', tone:'Light',  weight:'265g', weave:'Plain Weave',     finish:'Soft',   occasions:['CASUAL SMART','SUMMER'] },
+  { code:'59900-16', name:'Deep Burgundy',         hex:'#5a2038', tone:'Warm',   weight:'285g', weave:'Fine Melange',    finish:'Rich',   occasions:['EVENING','DINNER'] },
+  { code:'59900-17', name:'Pale Linen',            hex:'#d8ceb8', tone:'Light',  weight:'260g', weave:'Linen Blend',     finish:'Textured',occasions:['SUMMER','RESORT'] },
+  { code:'59900-18', name:'Gunmetal',              hex:'#484c50', tone:'Cool',   weight:'290g', weave:'Plain Weave',     finish:'Matte',  occasions:['BUSINESS','FORMAL'] },
+  { code:'59900-20', name:'Classic Black',         hex:'#1c1c20', tone:'Deep',   weight:'295g', weave:'Fine Twill',      finish:'Smooth', occasions:['BLACK TIE','FORMAL'] },
+];
+
+const collectionData = {
+  suits: [
+    { code:'Series 599', name:'Fine Melange Weave', hex:'#606078', articles:'20 articles' },
+    { code:'Series 711', name:'New 2023 Collection', hex:'#3a3a52', articles:'18 articles' },
+    { code:'Series 790', name:'Luxury Blend', hex:'#4a4a5e', articles:'12 articles' },
+    { code:'Series 3799', name:'Classic Worsted', hex:'#2a2a3c', articles:'15 articles' },
+    { code:'Series 4700', name:'Premium Stretch', hex:'#606070', articles:'22 articles' },
+    { code:'Series 4900', name:'Summer Weight', hex:'#8888a0', articles:'10 articles' },
+    { code:'Series 71200', name:'Vol 2026', hex:'#383848', articles:'16 articles' },
+    { code:'Biella 70xx', name:'Italian Biella', hex:'#4a4858', articles:'25 articles' },
+    { code:'CARLI', name:'Premium Italian', hex:'#3c3c50', articles:'20 articles' },
+    { code:'GS1900', name:'Fine Twill', hex:'#505068', articles:'14 articles' },
+  ],
+  shirts: [
+    { code:'Lord & Taylor', name:'Business Shirts TR', hex:'#e8e0d4', articles:'30 articles' },
+    { code:'Oxford White', name:'Classic Oxford', hex:'#f0ece8', articles:'20 articles' },
+    { code:'Fine Stripe', name:'Business Stripe', hex:'#d8e0e8', articles:'15 articles' },
+  ],
+  lining: [
+    { code:'Lining A', name:'Smooth Cupro', hex:'#b8c0c8', articles:'12 articles' },
+    { code:'Lining B', name:'Striped Bemberg', hex:'#c0b8c8', articles:'10 articles' },
+  ],
+  overcoats: [
+    { code:'Overcoat I', name:'Heavy Tweed', hex:'#785848', articles:'8 articles' },
+    { code:'Overcoat II', name:'Cashmere Blend', hex:'#907868', articles:'6 articles' },
+  ]
+};
+
+const pairings = [
+  { name:'White', hex:'#f5f5f0' },
+  { name:'Lt. Blue', hex:'#b8c4cc' },
+  { name:'Navy Tie', hex:'#2c3e50' },
+  { name:'Camel', hex:'#b8956a' },
+  { name:'Burgundy', hex:'#8b2040' },
+  { name:'Black', hex:'#1c1c20' },
+];
+
+let currentIdx = 0;
+let filteredFabrics = [...fabrics];
+let selectedStyle = 0;
+
+// ─── RENDER ─────────────────────────────────────
+
+function renderFabricList(list) {
+  const el = document.getElementById('fabric-list');
+  el.innerHTML = list.map((f, i) => `
+    <div class="fabric-item ${fabrics[currentIdx]===f?'active':''}" onclick="selectFabric(${fabrics.indexOf(f)})">
+      <div class="fab-swatch" style="background:${f.hex};"></div>
+      <div class="fab-info">
+        <div class="fab-code">${f.code}</div>
+        <div class="fab-name">${f.name}</div>
+        <div class="fab-tone">${f.tone} · ${f.weight}</div>
+      </div>
+      <div class="fab-arrow">›</div>
+    </div>
+  `).join('');
+}
+
+function renderDetail(idx) {
+  const f = fabrics[idx];
+  const styleLabels = ['2-Btn Notch','Peak Lapel','Dbl Breasted'];
+  const styleSubs = ['Classic','Executive','Power'];
+  const svgPaths = [
+    `<path d="M30 30 L20 50 L18 90 L82 90 L80 50 L70 30 Z" fill="${f.hex}" stroke="rgba(0,0,0,0.1)" stroke-width="0.5"/>
+     <path d="M40 30 L50 55 L60 30 L56 22 L50 24 L44 22 Z" fill="#3a3a3c" opacity="0.7"/>
+     <circle cx="50" cy="62" r="2.5" fill="#b8965a" opacity="0.8"/>
+     <circle cx="50" cy="72" r="2.5" fill="#b8965a" opacity="0.8"/>
+     <rect x="20" y="67" width="16" height="5" rx="1" fill="rgba(0,0,0,0.06)"/>
+     <rect x="64" y="67" width="16" height="5" rx="1" fill="rgba(0,0,0,0.06)"/>
+     <path d="M20 50 L12 85 L20 86 L24 55" fill="${f.hex}" opacity="0.9"/>
+     <path d="M80 50 L88 85 L80 86 L76 55" fill="${f.hex}" opacity="0.9"/>`,
+    `<path d="M30 30 L20 50 L18 90 L82 90 L80 50 L70 30 Z" fill="${f.hex}" stroke="rgba(0,0,0,0.1)" stroke-width="0.5"/>
+     <path d="M38 32 L50 56 L62 32 L68 20 L56 26 L50 24 L44 26 L32 20 Z" fill="#3a3a3c" opacity="0.7"/>
+     <circle cx="50" cy="58" r="2" fill="#b8965a" opacity="0.8"/>
+     <circle cx="50" cy="67" r="2" fill="#b8965a" opacity="0.8"/>
+     <circle cx="50" cy="76" r="2" fill="#b8965a" opacity="0.8"/>
+     <rect x="20" y="66" width="16" height="5" rx="1" fill="rgba(0,0,0,0.06)"/>
+     <rect x="64" y="66" width="16" height="5" rx="1" fill="rgba(0,0,0,0.06)"/>
+     <path d="M20 50 L12 85 L20 86 L24 55" fill="${f.hex}" opacity="0.9"/>
+     <path d="M80 50 L88 85 L80 86 L76 55" fill="${f.hex}" opacity="0.9"/>`,
+    `<path d="M26 30 L18 50 L18 90 L82 90 L82 50 L74 30 Z" fill="${f.hex}" stroke="rgba(0,0,0,0.1)" stroke-width="0.5"/>
+     <path d="M42 30 L38 90 L62 90 L58 30 Z" fill="#3a3a52" opacity="0.3"/>
+     <path d="M36 32 L50 62 L64 32 L70 18 L58 26 L50 24 L42 26 L30 18 Z" fill="#3a3a3c" opacity="0.7"/>
+     <circle cx="42" cy="58" r="2" fill="#b8965a" opacity="0.8"/>
+     <circle cx="58" cy="58" r="2" fill="#b8965a" opacity="0.8"/>
+     <circle cx="42" cy="68" r="2" fill="#b8965a" opacity="0.8"/>
+     <circle cx="58" cy="68" r="2" fill="#b8965a" opacity="0.8"/>
+     <circle cx="42" cy="78" r="2" fill="#b8965a" opacity="0.8"/>
+     <circle cx="58" cy="78" r="2" fill="#b8965a" opacity="0.8"/>
+     <path d="M18 50 L10 85 L18 86 L22 55" fill="${f.hex}" opacity="0.9"/>
+     <path d="M82 50 L90 85 L82 86 L78 55" fill="${f.hex}" opacity="0.9"/>`
+  ];
+
+  document.getElementById('detail-panel').innerHTML = `
+    <div class="detail-header">
+      <div>
+        <div class="detail-code">${f.code}</div>
+        <div class="detail-code-sub">${f.name}</div>
+      </div>
+      <div class="detail-nav-btns">
+        <button class="nav-btn" onclick="stepFabric(-1)" title="Previous">‹</button>
+        <button class="nav-btn" onclick="stepFabric(1)" title="Next">›</button>
+      </div>
+    </div>
+
+    <div class="detail-body">
+      <div class="detail-fabric-preview">
+        <div class="big-swatch" style="background:${f.hex};">
+          <div class="big-swatch-fold"></div>
+        </div>
+        <div class="swatch-label">${f.code}</div>
+      </div>
+      <div class="detail-specs">
+        <div class="spec-row"><span class="spec-key">Colour</span><span class="spec-val">${f.name}</span></div>
+        <div class="spec-row"><span class="spec-key">Tone</span><span class="spec-val">${f.tone}</span></div>
+        <div class="spec-row"><span class="spec-key">Weight</span><span class="spec-val">${f.weight}</span></div>
+        <div class="spec-row"><span class="spec-key">Weave</span><span class="spec-val">${f.weave}</span></div>
+        <div class="spec-row"><span class="spec-key">Finish</span><span class="spec-val">${f.finish}</span></div>
+        <div class="spec-row"><span class="spec-key">Composition</span><span class="spec-val">—</span></div>
+        <div class="occasion-row">
+          ${f.occasions.map(o=>`<div class="occ-tag">${o}</div>`).join('')}
+        </div>
+      </div>
+    </div>
+
+    <div class="style-strip">
+      <div class="style-strip-label">Recommended cut styles</div>
+      <div class="style-options">
+        ${[0,1,2].map(si=>`
+        <div class="style-opt ${selectedStyle===si?'selected':''}" onclick="selectStyle(${si})">
+          <svg class="style-svg" viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg">
+            ${svgPaths[si]}
+          </svg>
+          <div class="style-opt-name">${styleLabels[si]}</div>
+          <div class="style-opt-sub">${styleSubs[si]}</div>
+        </div>`).join('')}
+      </div>
+    </div>
+
+    <div class="pairing-strip">
+      <div class="pair-label">Pairs with</div>
+      <div class="pair-swatches">
+        ${pairings.map(p=>`
+        <div class="pair-swatch">
+          <div class="pair-circle" style="background:${p.hex};"></div>
+          <div class="pair-name">${p.name}</div>
+        </div>`).join('')}
+      </div>
+      <button class="share-btn" onclick="shareFabric('${f.code}')">Share ↗</button>
+    </div>
+  `;
+
+  document.getElementById('article-count').textContent = `${fabrics.length} Articles · Series 599`;
+}
+
+function renderCollectionGrid(key) {
+  const items = collectionData[key];
+  const el = document.getElementById(`${key==='suits'?'suit':key==='overcoats'?'overcoat':key}-grid`);
+  if(!el) return;
+  el.innerHTML = items.map(c=>`
+    <div class="coll-card" onclick="goToCatalogue()">
+      <div class="coll-swatch" style="background:${c.hex};"></div>
+      <div class="coll-code">${c.code}</div>
+      <div class="coll-name">${c.name}</div>
+      <div style="font-size:10px;color:var(--muted);margin-top:2px;">${c.articles}</div>
+      <div class="coll-arrow">View articles →</div>
+    </div>
+  `).join('');
+}
+
+// ─── INTERACTIONS ────────────────────────────────
+
+function selectFabric(idx) {
+  currentIdx = idx;
+  renderFabricList(filteredFabrics);
+  renderDetail(idx);
+  // scroll to active
+  const items = document.querySelectorAll('.fabric-item');
+  const activeItem = document.querySelector('.fabric-item.active');
+  if(activeItem) activeItem.scrollIntoView({ block:'nearest', behavior:'smooth' });
+}
+
+function stepFabric(dir) {
+  currentIdx = (currentIdx + dir + fabrics.length) % fabrics.length;
+  filteredFabrics = [...fabrics];
+  renderFabricList(filteredFabrics);
+  renderDetail(currentIdx);
+}
+
+function selectStyle(si) {
+  selectedStyle = si;
+  renderDetail(currentIdx);
+}
+
+function filterFabrics(q) {
+  q = q.toLowerCase();
+  filteredFabrics = q ? fabrics.filter(f => f.code.toLowerCase().includes(q) || f.name.toLowerCase().includes(q)) : [...fabrics];
+  renderFabricList(filteredFabrics);
+}
+
+function switchColTab(key, btn) {
+  document.querySelectorAll('.cat-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#collection .section-content').forEach(s=>s.classList.remove('active'));
+  document.getElementById('col-'+key).classList.add('active');
+  renderCollectionGrid(key);
+}
+
+function showSection(id, link) {
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  link.classList.add('active');
+  const el = document.getElementById(id);
+  if(el) el.scrollIntoView({ behavior:'smooth', block:'start' });
+  return false;
+}
+
+function scrollTo(id) {
+  document.getElementById(id).scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+function goToCatalogue() {
+  document.getElementById('catalogue').scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+function shareFabric(code) {
+  const url = window.location.href.split('#')[0] + '#catalogue';
+  try { navigator.clipboard.writeText(url); } catch(e) {}
+  showToast(`Link copied — ${code}`);
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2800);
+}
+
+// ─── INIT ────────────────────────────────────────
+renderCollectionGrid('suits');
+renderFabricList(fabrics);
+renderDetail(0);
+</script>
+</body>
+</html>
