@@ -263,6 +263,110 @@ footer{
 .footer-brand{font-family:var(--display);font-size:20px;letter-spacing:5px;color:rgba(240,236,228,0.5);}
 .footer-sub{font-size:9px;letter-spacing:2px;color:rgba(240,236,228,0.2);margin-top:4px;}
 .footer-copy{font-size:10px;letter-spacing:1px;color:rgba(240,236,228,0.2);}
+
+  /* ── MOBILE RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links a { font-size: 9px; letter-spacing: 1px; }
+    .nav-links { gap: 16px; }
+    .nav-tag { font-size: 8px; padding: 4px 8px; }
+
+    /* Hero — stack vertically on mobile */
+    .hero {
+      grid-template-columns: 1fr;
+      height: auto;
+      min-height: 100dvh;
+    }
+    .hero-img-wrap {
+      height: 55vh;
+      min-height: 340px;
+      order: 1;
+    }
+    .hero-img-wrap img {
+      object-position: top center;
+    }
+    .hero-right {
+      order: 2;
+      padding: 36px 24px 48px;
+      border-left: none;
+      border-top: 0.5px solid rgba(184,150,90,0.15);
+    }
+    .hero-title { font-size: 52px; margin-bottom: 20px; }
+    .hero-title .sm { font-size: 18px; letter-spacing: 3px; }
+    .hero-desc { font-size: 12px; max-width: 100%; }
+    .spec-bar { flex-wrap: wrap; }
+    .spec { min-width: 45%; }
+    .photo-label {
+      bottom: 20px; left: 16px;
+      padding: 10px 14px;
+    }
+    .photo-label-code { font-size: 18px; }
+    .photo-label-name { font-size: 9px; }
+    .eyebrow { font-size: 8px; }
+    .hero-eyebrow { font-size: 8px; }
+
+    /* Fabrics section */
+    .section-header { 
+      padding: 48px 24px 32px; 
+      flex-direction: column; gap: 0;
+    }
+    .sh-right { display: none; }
+    .sh-title { font-size: 36px; }
+
+    /* Glen Plaid cards — single column */
+    [style*="grid-template-columns:repeat(3,1fr)"] {
+      display: flex !important;
+      flex-direction: column !important;
+    }
+    [style*="border-right:0.5px"] {
+      border-right: none !important;
+      border-bottom: 0.5px solid rgba(15,14,12,0.08) !important;
+    }
+    [style*="padding:72px 64px"] {
+      padding: 48px 24px 32px !important;
+    }
+    [style*="padding:28px;background:#f5f1ea"] {
+      padding: 20px !important;
+    }
+
+    /* Editorial / Story */
+    .editorial {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+    .ed-photo {
+      height: 50vh;
+      min-height: 280px;
+    }
+    .ed-copy {
+      padding: 48px 24px;
+    }
+    .ed-title { font-size: 36px; }
+    .ed-quote { font-size: 17px; }
+    .ed-body { font-size: 14px; }
+
+    /* Pairing */
+    .pairing-sec { padding: 48px 24px; }
+    .pair-title { font-size: 32px; }
+
+    /* Footer */
+    footer { 
+      padding: 28px 24px; 
+      flex-direction: column; 
+      gap: 8px; 
+      text-align: center;
+    }
+
+    /* Section eyebrow */
+    .section-header { padding: 48px 24px 28px; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title { font-size: 44px; }
+    .nav-links a { display: none; }
+    .nav-links a:last-of-type { display: block; }
+  }
+
 </style>
 </head>
 <body>
