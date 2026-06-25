@@ -153,6 +153,30 @@ footer{background:var(--dark);padding:36px 64px;display:flex;justify-content:spa
 
   footer{flex-direction:column;padding:24px 20px;text-align:center;gap:8px;}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ── Collection Switcher ── */
+.nav-collections{display:flex !important;gap:0;border:0.5px solid rgba(184,150,90,0.4);}
+.nav-coll{display:inline-block !important;font-size:9px;letter-spacing:2px;padding:6px 14px;
+  color:rgba(240,236,228,0.35);text-decoration:none;text-transform:uppercase;
+  border-right:0.5px solid rgba(184,150,90,0.2);transition:all .2s;}
+.nav-coll:last-child{border-right:none;}
+.nav-coll:hover{background:rgba(184,150,90,0.15);color:var(--gold);}
+.nav-coll.active{background:rgba(184,150,90,0.22);color:var(--gold);font-weight:500;}
+
 </style>
 </head>
 <body>
@@ -163,8 +187,8 @@ footer{background:var(--dark);padding:36px 64px;display:flex;justify-content:spa
     <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Collection</a>
     <a href="#fabrics">Fabrics</a>
     <a href="#story">The Story</a>
-    <div class="nav-tag">CAVANI · 2026</div>
-  </div>
+    <div class="nav-collections"><a href="cavani_bamboo_FINAL.html" class="nav-coll active">CAVANI</a><a href="lord_taylor_extra.html" class="nav-coll">L&amp;T EXTRA</a><a href="cavani_gold.html" class="nav-coll">GOLD</a></div>
+  <a href="cavani_gold.html" class="nav-coll">GOLD</a></div>
 </nav>
 
 <!-- HERO -->
